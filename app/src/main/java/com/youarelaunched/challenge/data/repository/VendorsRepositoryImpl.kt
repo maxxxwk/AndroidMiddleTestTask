@@ -1,5 +1,6 @@
 package com.youarelaunched.challenge.data.repository
 
+import androidx.compose.ui.text.toLowerCase
 import com.youarelaunched.challenge.data.network.api.ApiVendors
 import com.youarelaunched.challenge.data.network.models.NetworkCategory
 import com.youarelaunched.challenge.data.network.models.NetworkVendor
@@ -15,9 +16,13 @@ class VendorsRepositoryImpl @Inject constructor(
     private val api: ApiVendors
 ) : VendorsRepository {
 
-    override suspend fun getVendors(): List<Vendor> = withContext(workDispatcher) {
+    override suspend fun getVendors(searchQuery: String?): List<Vendor> = withContext(workDispatcher) {
         api.getVendors().map {
             it.toVendor()
+        }.filter { vendor ->
+            searchQuery?.let {
+                vendor.companyName.lowercase().contains(it.lowercase())
+            } ?: true
         }
     }
 
