@@ -23,7 +23,8 @@ val LightColorsPalette = VendorAppColors(
     buttonUnselected = Color.White,
     background = Background,
     chipsBackground = Color.White,
-    snackBarBackground = GrayPrimary
+    snackBarBackground = GrayPrimary,
+    searchFieldBackground = Color.White
 )
 
 @Stable
@@ -38,7 +39,8 @@ data class VendorAppColors(
 
     val background: Color,
     val chipsBackground: Color,
-    val snackBarBackground: Color
+    val snackBarBackground: Color,
+    val searchFieldBackground: Color
 )
 
 internal val LocalVendorAppColors = staticCompositionLocalOf<VendorAppColors> {
