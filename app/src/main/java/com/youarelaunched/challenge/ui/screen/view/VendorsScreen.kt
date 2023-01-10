@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.youarelaunched.challenge.ui.screen.state.VendorsScreenUiState
 import com.youarelaunched.challenge.ui.screen.view.components.ChatsumerSnackbar
+import com.youarelaunched.challenge.ui.screen.view.components.NoResult
 import com.youarelaunched.challenge.ui.screen.view.components.VendorItem
 import com.youarelaunched.challenge.ui.theme.VendorAppTheme
 
@@ -53,6 +54,8 @@ fun VendorsScreen(
                 }
 
             }
+        } else if (uiState.vendors != null && uiState.vendors.isEmpty()){
+            NoResult()
         }
     }
 }

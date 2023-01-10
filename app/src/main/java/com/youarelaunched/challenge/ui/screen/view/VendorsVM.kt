@@ -27,7 +27,7 @@ class VendorsVM @Inject constructor(
         getVendors()
     }
 
-    fun getVendors() {
+    private fun getVendors() {
         viewModelScope.launch {
             _uiState.update {
                 it.copy(
