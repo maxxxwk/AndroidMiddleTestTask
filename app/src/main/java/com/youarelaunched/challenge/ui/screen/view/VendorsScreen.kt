@@ -36,6 +36,7 @@ fun VendorsScreen(
         backgroundColor = VendorAppTheme.colors.background,
         snackbarHost = { ChatsumerSnackbar(it) }
     ) { paddings ->
+
         if (!uiState.vendors.isNullOrEmpty()) {
             LazyColumn(
                 modifier = Modifier
