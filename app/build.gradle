@@ -80,4 +80,8 @@ dependencies {
     kapt hiltDependencies.kapt
 
     implementation retrofit.jsonConverter
+
+    testImplementation junit.lib
+    testImplementation mockk.lib
+    testImplementation coroutinesTest.lib
 }

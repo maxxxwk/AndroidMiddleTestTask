@@ -34,7 +34,7 @@ fun VendorsRoute(
     VendorsScreen(
         uiState = uiState,
         onSearchFieldValueChange = viewModel::inputSearchQuery,
-        search = viewModel::search
+        search = { viewModel.getVendors(uiState.searchFieldValue) }
     )
 }
 

@@ -69,6 +69,19 @@ buildscript {
                 lib          : "com.squareup.retrofit2:retrofit:$retrofitVersion",
                 jsonConverter: "com.squareup.retrofit2:converter-gson:$retrofitVersion"
         ]
+
+        junitVersion = "4.13.2"
+        junit = [
+                lib : "junit:junit:$junitVersion"
+        ]
+        mockkVersion = "1.13.3"
+        mockk = [
+                lib: "io.mockk:mockk:${mockkVersion}"
+        ]
+        coroutinesversion = "1.6.4"
+        coroutinesTest = [
+                lib: "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesversion"
+        ]
     }
 
     dependencies {

@@ -31,7 +31,7 @@ class VendorsVM @Inject constructor(
         _uiState.filter { it.searchFieldValue.length >= MIN_CHARS_NUMBER_TO_SEARCH }
             .debounce(SEARCH_DEBOUNCE_TIME)
             .distinctUntilChanged()
-            .onEach { search() }
+            .onEach { getVendors(it.searchFieldValue) }
             .launchIn(viewModelScope)
     }
 
@@ -43,14 +43,16 @@ class VendorsVM @Inject constructor(
         }
     }
 
-    fun search() {
-        getVendors(uiState.value.searchFieldValue)
-    }
-
-    private fun getVendors(searchQuery: String? = null) {
+    fun getVendors(searchQuery: String? = null) {
         viewModelScope.launch {
             _uiState.update {
-                it.copy(vendors = repository.getVendors(searchQuery))
+                it.copy(
+                    vendors = try {
+                        repository.getVendors(searchQuery)
+                    } catch (e: Exception) {
+                        null
+                    }
+                )
             }
         }
     }

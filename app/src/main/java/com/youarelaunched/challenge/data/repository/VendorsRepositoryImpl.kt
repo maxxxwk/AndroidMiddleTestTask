@@ -1,15 +1,18 @@
 package com.youarelaunched.challenge.data.repository
 
-import androidx.compose.ui.text.toLowerCase
 import com.youarelaunched.challenge.data.network.api.ApiVendors
 import com.youarelaunched.challenge.data.network.models.NetworkCategory
 import com.youarelaunched.challenge.data.network.models.NetworkVendor
 import com.youarelaunched.challenge.data.repository.model.Vendor
 import com.youarelaunched.challenge.data.repository.model.VendorCategory
 import com.youarelaunched.challenge.di.DispatcherIo
-import kotlinx.coroutines.*
 import javax.inject.Inject
 import kotlin.text.Typography.bullet
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.withContext
 
 class VendorsRepositoryImpl @Inject constructor(
     @DispatcherIo private val workDispatcher: CoroutineDispatcher,
