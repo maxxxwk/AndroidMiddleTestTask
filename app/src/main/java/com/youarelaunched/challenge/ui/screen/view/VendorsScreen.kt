@@ -78,7 +78,8 @@ fun VendorsScreen(
                             vendor = vendor,
                             modifier = Modifier.semantics {
                                 contentDescription = "Vendors list item"
-                            })
+                            }
+                        )
                     }
                 }
             } else if (uiState.vendors != null && uiState.vendors.isEmpty()) {

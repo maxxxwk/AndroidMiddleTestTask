@@ -10,9 +10,9 @@ import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.debounce
-import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -30,8 +30,8 @@ class VendorsVM @Inject constructor(
         getVendors()
         _uiState.filter { it.searchFieldValue.length >= MIN_CHARS_NUMBER_TO_SEARCH }
             .debounce(SEARCH_DEBOUNCE_TIME)
-            .distinctUntilChanged()
-            .onEach { getVendors(it.searchFieldValue) }
+            .map { it.searchFieldValue }
+            .onEach(::getVendors)
             .launchIn(viewModelScope)
     }
 

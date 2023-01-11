@@ -48,6 +48,7 @@ buildscript {
                 uiToolingPreview: "androidx.compose.ui:ui-tooling-preview:$composeUiVersion",
                 //Constraint layout https://developer.android.com/jetpack/compose/layouts/constraintlayout
                 constraintLayout: "androidx.constraintlayout:constraintlayout-compose:1.0.1",
+                
                 test: "androidx.compose.ui:ui-test-manifest:$composeUiVersion"
         ]
 
