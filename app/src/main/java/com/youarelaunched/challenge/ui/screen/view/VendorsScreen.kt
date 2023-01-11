@@ -16,6 +16,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.youarelaunched.challenge.middle.R
 import com.youarelaunched.challenge.ui.screen.state.VendorsScreenUiState
@@ -72,11 +74,15 @@ fun VendorsScreen(
                     contentPadding = PaddingValues(vertical = 24.dp)
                 ) {
                     items(uiState.vendors) { vendor ->
-                        VendorItem(vendor = vendor)
+                        VendorItem(
+                            vendor = vendor,
+                            modifier = Modifier.semantics {
+                                contentDescription = "Vendors list item"
+                            })
                     }
                 }
             } else if (uiState.vendors != null && uiState.vendors.isEmpty()) {
-                NoResult()
+                NoResult(modifier = Modifier.semantics { contentDescription = "No result" })
             }
         }
     }

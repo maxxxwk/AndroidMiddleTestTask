@@ -47,7 +47,8 @@ buildscript {
                 //Compose tooling RN https://developer.android.com/jetpack/compose/tooling
                 uiToolingPreview: "androidx.compose.ui:ui-tooling-preview:$composeUiVersion",
                 //Constraint layout https://developer.android.com/jetpack/compose/layouts/constraintlayout
-                constraintLayout: "androidx.constraintlayout:constraintlayout-compose:1.0.1"
+                constraintLayout: "androidx.constraintlayout:constraintlayout-compose:1.0.1",
+                test: "androidx.compose.ui:ui-test-manifest:$composeUiVersion"
         ]
 
         //Accompanist RN https://github.com/google/accompanist/releases
@@ -72,7 +73,8 @@ buildscript {
 
         junitVersion = "4.13.2"
         junit = [
-                lib : "junit:junit:$junitVersion"
+                lib : "junit:junit:$junitVersion",
+                compose: "androidx.compose.ui:ui-test-junit4:$composeUiVersion"
         ]
         mockkVersion = "1.13.3"
         mockk = [
